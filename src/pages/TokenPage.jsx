@@ -28,36 +28,36 @@ const tokenInfo = {
   },
 };
 const TokenPage = () => {
-  const [tokenResults, setTokenResults] = useState(tokenInfo);
+  const [tokenResults, setTokenResults] = useState([tokenInfo]);
 
   const fetchTokenResults = async () => {
     try {
       const response = await axios.get(url);
-      const singlePair = response.data.pairs.slice(0, 1);
-      console.log(singlePair[0]);
-      const newTokenInfo = {
+      const PairsData = response.data.pairs.slice(0, 5);
+
+      const tokenObjectsData = PairsData.map((obj) => ({
         Basic_Info: {
-          pair_createdAt: singlePair[0].pairCreatedAt,
-          base_token_symbol: singlePair[0].baseToken.symbol,
-          dexId: singlePair[0].dexId,
-          pair_address: singlePair[0].pairAddress,
+          pair_createdAt: obj.pairCreatedAt,
+          base_token_symbol: obj.baseToken.symbol,
+          dexId: obj.dexId,
+          pair_address: obj.pairAddress,
         },
         Base_Token: {
-          base_token_address: singlePair[0].baseToken.address,
-          base_token_symbol: singlePair[0].baseToken.symbol,
-          base_token_name: singlePair[0].baseToken.name,
+          base_token_address: obj.baseToken.address,
+          base_token_symbol: obj.baseToken.symbol,
+          base_token_name: obj.baseToken.name,
         },
         Quote_Token: {
-          quote_token_name: singlePair[0].quoteToken.name,
-          quote_token_address: singlePair[0].quoteToken.address,
-          quote_token_symbol: singlePair[0].quoteToken.symbol,
+          quote_token_name: obj.quoteToken.name,
+          quote_token_address: obj.quoteToken.address,
+          quote_token_symbol: obj.quoteToken.symbol,
         },
         Price: {
-          price_native: singlePair[0].priceNative,
-          price_usd: singlePair[0].priceUsd,
+          price_native: obj.priceNative,
+          price_usd: obj.priceUsd,
         },
-      };
-      setTokenResults(newTokenInfo);
+      }));
+      setTokenResults(tokenObjectsData);
     } catch (error) {
       console.log(error);
     }
@@ -70,10 +70,16 @@ const TokenPage = () => {
   return (
     <div className="flex">
       <Aside />
-      <div className="bg-main-image w-full -ml-5 px-10 ">
+      <div className="bg-main-image w-full -ml-5 px-10 max-h-screen overflow-auto pb-10">
         <Navbar />
         <h2 className="text-white text-2xl">Token Search Results</h2>
-        <TokenCardContainer tokenResults={tokenResults} />
+        <div>
+          {tokenResults.map((singleToken, index) => {
+            return (
+              <TokenCardContainer key={index} tokenResults={singleToken} />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

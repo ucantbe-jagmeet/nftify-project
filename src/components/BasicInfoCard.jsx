@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 const BasicInfoCard = ({ data }) => {
   return (
-    <div className="h-52 w-64 bg-[#390554] text-white px-7 flex  flex-col gap-y-4 rounded-lg m-5">
+    <div className="h-52 w-64 bg-[#390554] text-white px-7 flex  flex-col gap-y-4 rounded-lg ">
       <h2 className="mt-4">Basic Info</h2>
       <div className="flex text-xs  justify-between">
         <h2>Pair Created At :</h2>

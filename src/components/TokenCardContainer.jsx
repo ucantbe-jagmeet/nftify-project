@@ -1,14 +1,18 @@
 /* eslint-disable react/prop-types */
 import BaseTokenCard from "./BaseTokenCard";
+import QuoteTokenCard from "./QuoteTokenCard";
 import BasicInfoCard from "./BasicInfoCard";
+import PriceCard from "./PriceCard";
 
 const TokenCardContainer = ({ tokenResults }) => {
-  //   console.log(tokenResults.Quote_Token);
-  //   console.log(tokenResults.Price);
   return (
-    <div className="flex">
-      <BasicInfoCard data={tokenResults.Basic_Info} />
-      <BaseTokenCard data={tokenResults.Base_Token} />
+    <div>
+      <div className="grid justify-center lg:grid-cols-2 xl:grid-cols-4 gap-7 mt-4 ">
+        <BasicInfoCard data={tokenResults.Basic_Info} />
+        <BaseTokenCard data={tokenResults.Base_Token} />
+        <QuoteTokenCard data={tokenResults.Quote_Token} />
+        <PriceCard data={tokenResults.Price} />
+      </div>
     </div>
   );
 };

@@ -10,3 +10,16 @@
   background-position: center center; 
   background-repeat: no-repeat;
 }
+
+
+
+.hide-scrollbar {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    overflow: -moz-scrollbars-none; /* Firefox */
+    -webkit-overflow-scrolling: touch; /* iOS Safari */
+  }
+  
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, and Opera */
+  }
