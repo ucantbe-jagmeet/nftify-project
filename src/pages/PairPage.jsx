@@ -3,6 +3,7 @@ import Aside from "../components/Aside";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import TokenCardContainer from "../components/TokenCardContainer";
+import Logo from "../components/Logo";
 const PairPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [tokenResult, setTokenResult] = useState();
@@ -50,7 +51,10 @@ const PairPage = () => {
   return (
     <div className="flex">
       <Aside />
-      <div className="bg-main-image w-full -ml-5 px-10 max-h-screen overflow-auto pb-10">
+      <div className="bg-main-image w-full sm:-ml-5 px-10 max-h-screen overflow-auto pb-10">
+        <div className="sm:hidden flex justify-center w-fit mx-auto">
+          <Logo />
+        </div>
         <Navbar onSearchQueryChange={setSearchQuery} />
         <h2 className="text-white text-2xl">Pair Address Search Results</h2>
         <div>

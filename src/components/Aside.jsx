@@ -8,7 +8,7 @@ const navLinkCss = `w-full h-16  flex gap-x-5 items-center tracking-wider font-s
 
 const Aside = () => {
   return (
-    <div className="h-screen lg:w-[25%] sm:w-[50%] w-[70%] rounded-tr-3xl bg-[#292929] flex flex-col justify-between z-20">
+    <div className="hidden h-screen lg:w-[25%] sm:w-[50%] w-[70%] rounded-tr-3xl bg-[#292929] sm:flex flex-col justify-between z-20">
       <div>
         <Logo />
         <div>

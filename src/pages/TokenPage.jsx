@@ -3,14 +3,16 @@ import Aside from "../components/Aside";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 import TokenCardContainer from "../components/TokenCardContainer";
+import Logo from "../components/Logo";
 const url =
   "https://api.dexscreener.com/latest/dex/tokens/0x2170Ed0880ac9A755fd29B2688956BD959F933F8";
 
 const TokenPage = () => {
   const [tokenResults, setTokenResults] = useState([]);
-
+  const [loading, setLoading] = useState(false);
   const fetchTokenResults = async () => {
     try {
+      setLoading(true);
       const response = await axios.get(url);
       const PairsData = response.data.pairs.slice(0, 10);
 
@@ -37,6 +39,7 @@ const TokenPage = () => {
         },
       }));
       setTokenResults(tokenObjectsData);
+      setLoading(false);
     } catch (error) {
       console.log(error);
     }
@@ -49,16 +52,23 @@ const TokenPage = () => {
   return (
     <div className="flex">
       <Aside />
-      <div className="bg-main-image w-full -ml-5 px-10 max-h-screen overflow-auto pb-10">
+      <div className="bg-main-image w-full sm:-ml-5 px-10 max-h-screen overflow-auto pb-10">
+        <div className="sm:hidden flex justify-center w-fit mx-auto">
+          <Logo />
+        </div>
         <Navbar />
         <h2 className="text-white text-2xl">Token Search Results</h2>
-        <div>
-          {tokenResults.map((singleToken, index) => {
-            return (
-              <TokenCardContainer key={index} tokenResults={singleToken} />
-            );
-          })}
-        </div>
+        {!loading ? (
+          <div className="flex items-center flex-col">
+            {tokenResults.map((singleToken, index) => {
+              return (
+                <TokenCardContainer key={index} tokenResults={singleToken} />
+              );
+            })}
+          </div>
+        ) : (
+          <h2 className="text-white mt-10 text-3xl">Fetching Data ....</h2>
+        )}
       </div>
     </div>
   );
