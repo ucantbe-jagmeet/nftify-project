@@ -6,7 +6,7 @@ import PriceCard from "./PriceCard";
 
 const TokenCardContainer = ({ tokenResults }) => {
   return (
-    <div className="grid justify-center lg:grid-cols-2 xl:grid-cols-4 gap-7 mt-4">
+    <div className="grid justify-center lg:grid-cols-2 xl:grid-cols-4 gap-7 mt-4 lg:ml-5">
       <BasicInfoCard data={tokenResults.Basic_Info} />
       <BaseTokenCard data={tokenResults.Base_Token} />
       <QuoteTokenCard data={tokenResults.Quote_Token} />
