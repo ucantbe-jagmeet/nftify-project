@@ -6,13 +6,11 @@ import PriceCard from "./PriceCard";
 
 const TokenCardContainer = ({ tokenResults }) => {
   return (
-    <div>
-      <div className="grid justify-center lg:grid-cols-2 xl:grid-cols-4 gap-7 mt-4 ">
-        <BasicInfoCard data={tokenResults.Basic_Info} />
-        <BaseTokenCard data={tokenResults.Base_Token} />
-        <QuoteTokenCard data={tokenResults.Quote_Token} />
-        <PriceCard data={tokenResults.Price} />
-      </div>
+    <div className="grid justify-center lg:grid-cols-2 xl:grid-cols-4 gap-7 mt-4">
+      <BasicInfoCard data={tokenResults.Basic_Info} />
+      <BaseTokenCard data={tokenResults.Base_Token} />
+      <QuoteTokenCard data={tokenResults.Quote_Token} />
+      <PriceCard data={tokenResults.Price} />
     </div>
   );
 };

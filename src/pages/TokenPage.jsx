@@ -5,35 +5,14 @@ import axios from "axios";
 import TokenCardContainer from "../components/TokenCardContainer";
 const url =
   "https://api.dexscreener.com/latest/dex/tokens/0x2170Ed0880ac9A755fd29B2688956BD959F933F8";
-const tokenInfo = {
-  Basic_Info: {
-    pair_createdAt: "",
-    base_token_symbol: "",
-    dexId: "",
-    pair_address: "",
-  },
-  Base_Token: {
-    base_token_address: "",
-    base_token_symbol: "",
-    base_token_name: "",
-  },
-  Quote_Token: {
-    quote_token_name: "",
-    quote_token_address: "",
-    quote_token_symbol: "",
-  },
-  Price: {
-    price_native: "",
-    price_usd: "",
-  },
-};
+
 const TokenPage = () => {
-  const [tokenResults, setTokenResults] = useState([tokenInfo]);
+  const [tokenResults, setTokenResults] = useState([]);
 
   const fetchTokenResults = async () => {
     try {
       const response = await axios.get(url);
-      const PairsData = response.data.pairs.slice(0, 5);
+      const PairsData = response.data.pairs.slice(0, 10);
 
       const tokenObjectsData = PairsData.map((obj) => ({
         Basic_Info: {

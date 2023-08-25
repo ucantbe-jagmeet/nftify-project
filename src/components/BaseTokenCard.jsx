@@ -11,9 +11,9 @@ const BaseTokenCard = ({ data }) => {
         <h2>Symbol</h2>
         <h2>{data.base_token_symbol}</h2>
       </div>
-      <div className="flex text-xs  justify-between">
-        <h2>Address </h2>
-        <h2>{data.base_token_address.slice(0, 12)}...</h2>
+      <div className="grid grid-cols-5 text-xs justify-between whitespace-normal gap-x-6 break-all">
+        <h2 className="col-span-2">Address</h2>
+        <h2 className="col-span-3 ">{data.base_token_address}</h2>
       </div>
     </div>
   );
