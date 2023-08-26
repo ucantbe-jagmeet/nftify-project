@@ -47,7 +47,7 @@ const TokenPage = () => {
   useEffect(() => {
     fetchTokenResults();
   }, []);
-  // console.log("tokenResults", tokenResults);
+  console.log("tokenResults", tokenResults);
 
   return (
     <div className="flex">
@@ -60,11 +60,16 @@ const TokenPage = () => {
         <h2 className="text-white text-2xl">Token Search Results</h2>
         {!loading ? (
           <div className="flex items-center flex-col">
-            {tokenResults.map((singleToken, index) => {
-              return (
-                <TokenCardContainer key={index} tokenResults={singleToken} />
-              );
-            })}
+            {tokenResults
+              .sort(
+                (a, b) =>
+                  parseFloat(b.Price.price_usd) - parseFloat(a.Price.price_usd)
+              )
+              .map((singleToken, index) => {
+                return (
+                  <TokenCardContainer key={index} tokenResults={singleToken} />
+                );
+              })}
           </div>
         ) : (
           <h2 className="text-white mt-10 text-3xl">Fetching Data ....</h2>
