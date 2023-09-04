@@ -13,7 +13,10 @@ const BasicInfoCard = ({ data }) => {
       </div>
       <div className="flex text-xs  justify-between">
         <h2>Dex Id</h2>
-        <h2>{data.dexId}</h2>
+        <h2>
+          {data.dexId.slice(0, 15)}
+          {data.dexId.length > 12 ? "..." : ""}
+        </h2>
       </div>
       <div className="grid grid-cols-5 text-xs justify-between whitespace-normal gap-x-6 break-all">
         <h2 className="col-span-2">Pair Address</h2>
