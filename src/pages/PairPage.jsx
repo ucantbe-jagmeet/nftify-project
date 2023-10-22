@@ -56,7 +56,7 @@ const PairPage = () => {
           <Logo />
         </div>
         <Navbar onSearchQueryChange={setSearchQuery} />
-        <h2 className="text-white text-2xl">Pair Address Search Results</h2>
+        <h2 className="text-white text-xl">Pair Address Search Results</h2>
         <div>
           {tokenResult &&
             tokenResult.map((singleToken, index) => {
