@@ -3,7 +3,7 @@ import Aside from "../components/Aside";
 
 const SharedLayout = () => {
   return (
-    <div className="flex">
+    <div className="flex ">
       <Aside />
       <Outlet />
     </div>

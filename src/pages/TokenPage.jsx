@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import Aside from "../components/Aside";
-import Navbar from "../components/Navbar";
 import axios from "axios";
 import TokenCardContainer from "../components/TokenCardContainer";
 import Logo from "../components/Logo";
@@ -52,12 +51,11 @@ const TokenPage = () => {
   return (
     <div className="flex">
       <Aside />
-      <div className="bg-main-image w-full sm:-ml-5 px-10 max-h-screen overflow-auto pb-10">
+      <div className="bg-main-image w-full sm:-ml-5 px-10 max-h-screen overflow-auto pb-10 hide-scrollbar">
         <div className="sm:hidden flex justify-center w-fit mx-auto">
           <Logo />
         </div>
-        <Navbar />
-        <h2 className="text-white text-2xl">Token Search Results</h2>
+        <h2 className="text-white text-2xl mt-10">Token Search Results</h2>
         {!loading ? (
           <div className="flex items-center flex-col">
             {tokenResults
